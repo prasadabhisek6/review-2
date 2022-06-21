@@ -1,0 +1,79 @@
+#include <stdio.h>
+
+int main()
+{
+  int t;
+  scanf("%d",&t);
+  while(t--)
+  {
+    int n;
+    scanf("%d",&n);
+    int arr[9]={1,2,5,10,20,50,100,500,1000};
+    int note_count=0;
+    for(int i=8;i>=0;i--)
+    {
+      if(arr[i]<=n)
+      {
+        note_count += n/arr[i];
+        n %= arr[i];
+      }
+    }
+    printf("%d\n",note_count);
+  }
+  return 0;
+}
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  int t;cin>>t;
+  while(t--)
+  {
+    int n;cin>>n;
+    int arr[9]={1,2,5,10,20,50,100,500,1000};
+    int note_count=0;
+    for(int i=8;i>=0;i--)
+    {
+      if(arr[i]<=n)
+      {
+        note_count += n/arr[i];
+        n %= arr[i];
+      }
+    }
+    cout<<note_count<<"\n";
+  }
+
+  return 0;
+}
+
+
+
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+  public static void main(String args[]) throws IOException {
+    Scanner sc = new Scanner(System.in);
+    int t = sc.nextInt();
+    while(t!=0)
+    {
+      int n = sc.nextInt();
+      int arr[] = {1,2,5,10,20,50,100,500,1000};
+      int note_count=0;
+      for(int i=8;i>=0;i--)
+      {
+        if(arr[i]<=n)
+        {
+          note_count += n/arr[i];
+          n %= arr[i];
+        }
+      }
+      System.out.println(note_count);
+      t--;
+    }
+
+  }
+}
