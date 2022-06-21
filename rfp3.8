@@ -1,0 +1,12 @@
+List<Integer> powers = new ArrayList<Integer>();
+n = . . .; // something > 0
+int power = 0;
+while (n != 0) {
+    if ((n & 1) != 0) {
+        powers.add(1 << power);
+        // or, if you just need the exponents:
+        // powers.add(power);
+    }
+    ++power;
+    n >>>= 1;
+}
