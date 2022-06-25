@@ -1,0 +1,7 @@
+struct employee {
+  string name;
+  long int code;
+  string designation;
+  int exp;
+  int age;
+};
