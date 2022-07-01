@@ -1,0 +1,17 @@
+internal void Enqueue(int item)  
+ {  
+     Node newNode = new Node(item);  
+  
+     // If queue is empty, then new node is front and rear both  
+     if (this.rear == null)  
+     {  
+         this.front = this.rear = newNode;  
+     }  
+     else  
+     {  
+         // Add the new node at the end of queue and change rear  
+         this.rear.next = newNode;  
+         this.rear = newNode;  
+     }  
+     Console.WriteLine("{0} inserted into Queue", item);  
+ }
