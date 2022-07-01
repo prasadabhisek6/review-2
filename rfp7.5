@@ -1,0 +1,12 @@
+// traverse to the end of the list and check positions moved
+while (cur.next != null && --position > 0) {
+    // update the prev and cur references
+    prev = cur;
+    cur = cur.next;
+}
+ 
+// update prev to point to new node
+prev.next = newNode;
+ 
+// & new node to point to current node
+newNode.next = cur;
