@@ -1,0 +1,29 @@
+1.	Now, our front-end and bacprivate async void btnTakePhoto_Click(object sender, RoutedEventArgs e) {  
+2.	    try {  
+3.	        photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);  
+4.	        if (photo == null) {  
+5.	            return;  
+6.	        } else {  
+7.	            imageStream = await photo.OpenAsync(FileAccessMode.Read);  
+8.	            BitmapDecoder decoder = await BitmapDecoder.CreateAsync(imageStream);  
+9.	            SoftwareBitmap softwarebitmap = await decoder.GetSoftwareBitmapAsync();  
+10.	            SoftwareBitmap softwarebitmapBGRB = SoftwareBitmap.Convert(softwarebitmap, BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);  
+11.	            SoftwareBitmapSource bitmapsource = new SoftwareBitmapSource();  
+12.	            await bitmapsource.SetBitmapAsync(softwarebitmapBGRB);  
+13.	            imgEmotion.Source = bitmapsource;  
+14.	        }  
+15.	    } catch {  
+16.	        tblEmotion.Text = "error taking Photo";  
+17.	    }  
+18.	}  
+19.	private async void btnEmotions_Click(object sender, RoutedEventArgs e) {  
+20.	    try {  
+21.	        emotionresult = await emotionserviceclient.RecognizeAsync(imageStream.AsStream());  
+22.	        if (emotionresult != null) {  
+23.	            Scores score = emotionresult[0].Scores;  
+24.	            tblEmotion.Text = "Your Emotion are : \n" + "Happiness: " + score.Happiness + "\n" + "Sadness: " + score.Sadness + "\n" + "Surprise: " + score.Surprise + "\n" + "Neutral: " + score.Neutral + "\n" + "Anger: " + score.Anger + "\n" + "Contempt: " + score.Contempt + "\n" + "Disgust: " + score.Disgust + "\n" + "Fear: " + score.Fear + "\n";  
+25.	        }  
+26.	    } catch {  
+27.	        tblEmotion.Text = "Error Returning the emotion";  
+28.	    }  
+29.	}  
