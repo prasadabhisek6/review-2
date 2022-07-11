@@ -1,0 +1,14 @@
+var name=document.get.ElementByIA
+('login_name").value;
+if (name.length<4 && name.length>30)
+(
+alert ('Name length is mismatch');
+)
+var pattern =new RegExp("^[a-z\.0-9]
++S");
+var pattern_value=var pattern.exec(name);
+if (return_value==null)
+{
+alert("please give valid name");
+return false)
+)
